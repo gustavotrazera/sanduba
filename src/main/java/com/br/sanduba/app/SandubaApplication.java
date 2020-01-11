@@ -1,4 +1,4 @@
-package com.br.sanduba.sanduba;
+package com.br.sanduba.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
