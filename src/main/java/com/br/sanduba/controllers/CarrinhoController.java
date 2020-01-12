@@ -1,29 +1,33 @@
 package com.br.sanduba.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.br.sanduba.dtos.CarrinhoDTO;
+import com.br.sanduba.entities.Carrinho;
 import com.br.sanduba.services.CarrinhoService;
 
-@Controller
+@RestController
 @RequestMapping("/carrinho")
 public class CarrinhoController {
 	
 	@Autowired CarrinhoService service;
 
-	@RequestMapping(value = "/", method = RequestMethod.POST)
-    public String addCarrinho() {          
-          return service.addCarrinho();
+	@PostMapping()
+    public Carrinho addCarrinho(CarrinhoDTO dto) {          
+          return service.addCarrinho(dto);
     }
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getCarrinho() {          
-          return service.getCarrinho();
+	@GetMapping()
+    public Carrinho getCarrinho(CarrinhoDTO dto) {          
+          return service.getCarrinho(dto);
     }
 	
-	@RequestMapping(value = "/", method = RequestMethod.DELETE)
+	@DeleteMapping()
     public void removeCarrinho() {
 		service.removeCarrinho();
     }
